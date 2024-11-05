@@ -10,7 +10,7 @@
 
 // Brute force Approach
 
-/*function largestElement(array) {
+function largestElement(array) {
   let maxElement = [];
   let result = array.sort((a, b) => a - b);
 
@@ -18,12 +18,12 @@
   return maxElement;
 }
 
-console.log(largestElement([2, 4, 1, 6, 4, 9])); */
+console.log(largestElement([2, 4, 1, 6, 4, 9])); 
 // time complexity: O(n log n) and the space Complexity is : O(1);
 
 // Optimal Approach
 
-/* function largestElem(arr){
+function largestElem(arr){
     let max = arr[0]
     for(let i = 1; i<arr.length; i++){
         if(arr[i] > max){
@@ -32,7 +32,7 @@ console.log(largestElement([2, 4, 1, 6, 4, 9])); */
     }
     return max
 }
-console.log(largestElem([1,3,5,15,3,6,4,9])) */ 
+console.log(largestElem([1,3,5,15,3,6,4,9])) 
 // time complexity: O(n) and the space Complexity: O(1);
 
 
@@ -41,7 +41,7 @@ console.log(largestElem([1,3,5,15,3,6,4,9])) */
 
 // Brute force Approach
 
-/* function secondLargest(array){
+ function secondLargest(array){
    array.sort((a,b) => b-a) // sort array to decending order from large to small
    for(let i = 1; i<array.length; i++){
     if(array[i] !== array[0]){ // check array[i] is different from array[0]
@@ -50,13 +50,13 @@ console.log(largestElem([1,3,5,15,3,6,4,9])) */
    }
    return undefined // if there is no second largest value
 }
-console.log(secondLargest([34,2,5,54,9,67])) */ 
+console.log(secondLargest([34,2,5,54,9,67])) 
 // Time complexity : o(n log n) and space complexity : o(1)
 
 
 // Optimal Approach
 
-/* function secondLargest(array){
+ function secondLargest(array){
     let largest = -Infinity
     let second = -Infinity
     for(let i = 1; i<array.length; i++){
@@ -69,6 +69,6 @@ console.log(secondLargest([34,2,5,54,9,67])) */
     }
     return [largest, second]
 }
-console.log(secondLargest([1,89,8,56,90])) */ 
+console.log(secondLargest([1,89,8,56,90])) 
 //Time Complexity: o(n)
 // space Complexity: o(1)
