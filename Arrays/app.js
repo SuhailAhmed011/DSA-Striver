@@ -72,3 +72,67 @@ console.log(secondLargest([34,2,5,54,9,67]))
 console.log(secondLargest([1,89,8,56,90])) 
 //Time Complexity: o(n)
 // space Complexity: o(1)
+
+// Question 3 ------------------------------------------------------------
+// check if the array is sorted
+// This approach is optimal and best approach. so we can single approach for this question
+
+ function isArraySorted(arr){
+    //for(let i = 0; i<=arr.length; i++){  // array sorted in asending order
+       // if(arr[i] >= arr[i+1]){ // this approach work for only check array is sorted in asending order
+          for(let i =1; i<arr.length; i++){
+            if(arr[i] >= arr[i-1]){
+                return false
+            }
+          }
+          return true
+}
+console.log(isArraySorted([5,4,3,2,1])) 
+// the Time complexity will be O(n) coz we used only single loop i
+
+
+// Question 4 -----------------------------------------------------------
+// Remove duplicates from sorted array
+// Brute force Approach
+ function removeDuplicate(arr){
+    let result = arr.filter((item, index) => arr.indexOf(item) === index)
+    return result
+}
+console.log(removeDuplicate([1,2,2,3,3])) 
+// the time complexity of this code is : O(n2) coz every time arr and filter method cals indexOf method and indexOf is also a O(n) operations.
+
+
+function removeDuplicateFormArray(arr){
+    let unique = Array.from(new Set(arr))
+    let n = unique.length
+    for(let i = 0; i<n; i++){
+        arr[i] = unique[i]
+    }
+    return [arr, n]
+}
+console.log(removeDuplicateFormArray([1,2,2,3,2,3,1,4,4]))  
+
+// Optimal Approach
+// with 2 pointer
+
+function removeDuplicatesFromArrayOptimal(array) {
+    let i = 0; // Initialize pointer i at the start
+    let n = array.length; // Store the length of the array
+    
+    // Loop starts with j at 1, since we assume the first element is unique
+    for (let j = 1; j < n; j++) {
+        // Check if the current element (array[j]) is different from the element at i (array[i])
+        if (array[j] != array[i]) {
+            // If unique, move i to the next position and assign array[j] to array[i+1]
+            array[i + 1] = array[j];
+            i++; // Move i forward
+        }
+    }
+    
+    // Return the modified array and the count of unique elements (i + 1)
+    return [array, i + 1];
+}
+
+console.log(removeDuplicatesFromArrayOptimal([1,1,2,2,3,3]))
+
+// the tome complexity of this code is : O(n)
