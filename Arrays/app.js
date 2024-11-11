@@ -142,15 +142,14 @@ console.log(removeDuplicatesFromArrayOptimal([1,1,2,2,3,3]))
 
 
 // brute force :-> 
-// 🤔 APPROUCH :-> 
+
 
 function rotateArrayByDPlace(array,D){
     const n = array.length;
     D = D % n;
     const temp = [];
 
-    // Step 1: Copying first d elements
-    // in the temporary array  
+  
     for(let i = 0; i < D; i++){
         temp[i] = array[i];
     }
@@ -174,7 +173,7 @@ function rotateArrayByDPlace(array,D){
 function rotateArrayByDPlaceOptimal(array,D){
     const n = array.length;
     D = D % n;
-    // first I am reversing array from 0 index to D index
+    
     reverseArray(array,0,D - 1); 
 
 
@@ -193,7 +192,7 @@ function rotateArrayByDPlaceOptimal(array,D){
     return array
 }
 
-// 🤓 analysis :-> the time complexity will be O(n2) but the space will be O(n)
+//  -> the time complexity will be O(n2) but the space will be O(n)
 
 
 
