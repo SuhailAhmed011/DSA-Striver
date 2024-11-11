@@ -99,7 +99,7 @@ console.log(isArraySorted([5,4,3,2,1]))
     return result
 }
 console.log(removeDuplicate([1,2,2,3,3])) 
-// the time complexity of this code is : O(n2) coz every time arr and filter method cals indexOf method and indexOf is also a O(n) operations.
+
 
 
 function removeDuplicateFormArray(arr){
@@ -116,14 +116,13 @@ console.log(removeDuplicateFormArray([1,2,2,3,2,3,1,4,4]))
 // with 2 pointer
 
 function removeDuplicatesFromArrayOptimal(array) {
-    let i = 0; // Initialize pointer i at the start
-    let n = array.length; // Store the length of the array
+    let i = 0; 
+    let n = array.length; 
     
-    // Loop starts with j at 1, since we assume the first element is unique
     for (let j = 1; j < n; j++) {
-        // Check if the current element (array[j]) is different from the element at i (array[i])
+      
         if (array[j] != array[i]) {
-            // If unique, move i to the next position and assign array[j] to array[i+1]
+         
             array[i + 1] = array[j];
             i++; // Move i forward
         }
@@ -136,3 +135,108 @@ function removeDuplicatesFromArrayOptimal(array) {
 console.log(removeDuplicatesFromArrayOptimal([1,1,2,2,3,3]))
 
 // the tome complexity of this code is : O(n)
+
+
+// Question No. 5 =========================================================================================================
+
+
+
+// brute force :-> 
+// 🤔 APPROUCH :-> 
+
+function rotateArrayByDPlace(array,D){
+    const n = array.length;
+    D = D % n;
+    const temp = [];
+
+    // Step 1: Copying first d elements
+    // in the temporary array  
+    for(let i = 0; i < D; i++){
+        temp[i] = array[i];
+    }
+
+  
+    for(let i = D; i < n; i++){
+        array[i-D] = array[i]
+    }
+   
+    for(let i = n - D; i < n; i++){
+        array[i] = temp[i - (n - D)]
+    }
+    return array
+}
+
+
+
+
+// OPTIMAL SOLUTION :->  just for space complaxity 
+
+function rotateArrayByDPlaceOptimal(array,D){
+    const n = array.length;
+    D = D % n;
+    // first I am reversing array from 0 index to D index
+    reverseArray(array,0,D - 1); 
+
+
+    reverseArray(D,n - 1);
+
+
+    reverseArray(0,n - 1)
+
+    function reverseArray(arr,start,end){
+        while(start < end){
+           [arr[start], arr[end]] = [arr[end], arr[start]] // using destructuring
+           start++
+           end--
+        }
+    }
+    return array
+}
+
+// 🤓 analysis :-> the time complexity will be O(n2) but the space will be O(n)
+
+
+
+// Question No. 6 =========================================================================================================
+
+//  Move all the zeros to the end of the array
+
+
+
+function moveZerosToEnd(array){
+    const n = array.length;
+    let zeroCounter = 0; 
+    for(let i = 0; i < n; i++){
+        if(array[i] == 0){
+            array.splice(i,1); 
+            zeroCounter++;
+            i--; 
+        }
+    }
+    for(let i = 0; i <= zeroCounter; i++){
+        array.push(0);
+    }
+    return array;
+}
+
+
+
+function moveZerosToEndOptimal(array){
+    let j = -1;
+    for(let i = 0; i < array.length;i++){
+        if(array[i] == 0){
+            j = i;
+            break;
+        }
+    }
+    for(let i = j+1; i < array.length; i++){
+        if(array[i] !== 0){
+            [array[j],array[i]] = [array[i],array[j]]
+            j++
+        }
+    }
+    return array
+}
+console.log(moveZerosToEndOptimal([1,2,0,3,0,8,6,0]))
+
+
